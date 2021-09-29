@@ -1,0 +1,30 @@
+@import "~antd/dist/antd.css";
+
+.ant-col.ant-col-4.ant-form-item-label {
+    width: 25% !important;
+    max-width: 100% !important;
+    display: block;
+    flex: initial;
+    text-align: left;
+}
+
+.ant-row.ant-form-item {
+    width: 100% !important;
+}
+
+.ant-col.ant-col-14.ant-form-item-control {
+    width: 75% !important;
+    text-align: left;
+}
+
+.ant-col.ant-col-14.ant-form-item-control .ant-form-item-control-input {
+    width: 100% !important;
+}
+
+.ant-input-number {
+    width: 100% !important;
+}
+
+.ant-picker {
+    width: 100%;
+}

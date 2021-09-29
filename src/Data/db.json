@@ -1,0 +1,11 @@
+{
+    "student": [
+      { "key": 0,"name": "Sam", "dob": "25-09-1990","stream": "Math", "subject_line_1": 50, "subject_line_2": 50, "subject_line_3": 50 },{ "key": 1,"name": "Mac","dob": "12-09-1996", "stream": "Business",  "subject_line_1": 60, "subject_line_2": 40, "subject_line_3": 50 },{  "key": 2,"name": "Jenni",  "dob": "18-06-1992","stream": "Bio", "subject_line_1": 65, "subject_line_2": 57, "subject_line_3": 60 },{  "key": 3,"name": "Joe",  "dob": "14-12-1993","stream": "Math", "subject_line_1": 60, "subject_line_2": 52, "subject_line_3": 48 },{ "key": 4,"name": "Miller",  "dob": "17-07-1989","stream": "Arts", "subject_line_1": 70, "subject_line_2": 60, "subject_line_3": 50 },{ "key": 5,"name": "Morty",  "dob": "14-01-2000","stream": "Math", "subject_line_1": 65, "subject_line_2": 55, "subject_line_3": 60 }
+    ],
+    "comments": [
+      { "id": 1, "body": "some comment", "postId": 1 }
+    ],
+    "profile": { "name": "typicode" }
+  }
+
+ 
