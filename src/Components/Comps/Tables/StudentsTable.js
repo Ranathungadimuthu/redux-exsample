@@ -1,60 +1,87 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { studentDetaislGet } from "../../../API/api";
-import { Table } from "antd";
-import moment from "moment";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { Table, Input } from "antd";
+import "./StudentsTable.css";
 
-const StudentsTable = () => {
-  const students = useSelector((state) => state);
-  const dispatch = useDispatch();
-  const colums = [
-    { title: "ID", dataIndex: "key", key: "key" },
-    { title: "Name", dataIndex: "name", key: "name" },
-    { title: "Date of Birth", dataIndex: "dob", key: "dob" },
-    { title: "Age", dataIndex: "age", key: "age" },
-    { title: "Stream", dataIndex: "stream", key: "stream" },
-    {
-      title: "Subject line 1",
-      dataIndex: "subject_line_1",
-      key: "subject_line_1",
-    },
-    {
-      title: "Subject line 2",
-      dataIndex: "subject_line_2",
-      key: "subject_line_2",
-    },
-    {
-      title: "Subject line 3",
-      dataIndex: "subject_line_3",
-      key: "subject_line_3",
-    },
-  ];
+export default function StudentsTable() {
+  const students = useSelector((state) => state.studentDetails);
 
-  useEffect(() => {
-    const studentDetailsArray = [];
+  const [display, setDsiplay] = useState([]);
 
-    studentDetaislGet()
-      .then((response) => {
-        const tempArr = response.data;
-        const now = moment();
-        for (let i = 0; i < tempArr.length; i++) {
-          const dob = moment(tempArr[i].dob, "dd-mm-yyyy");
-          const studentAge = now.diff(dob, "years");
-          studentDetailsArray.push({ ...tempArr[i], age: studentAge });
-        }
+  const drawTable = () => {
+    return (
+      <Table
+        columns={colums}
+        dataSource={display.length > 0 ? display : students}
+      />
+    );
+  };
 
-        dispatch({ type: "initialize", payload: { studentDetailsArray } });
-      })
-      .catch((error) => {
-        alert(error);
-      });
-  }, []);
+  const onSearch = (e) => {
+    const value = e.target.value;
+    if (value.length >= 0) {
+      const searchedStudent = students.filter(
+        (student) =>
+          student.name.toLowerCase().slice(0, value.length) ===
+          value.toLowerCase()
+      );
+      //console.log(...searchedStudent);
+      setDsiplay((display) => [...searchedStudent]);
 
+      //console.log(display);
+    } else {
+    }
+  };
+  console.log();
   return (
-    <div>
-      <Table columns={colums} dataSource={students.studentDetailsArray} />
+    <div className="table_page">
+      <div className="search_box">
+        <Input
+          placeholder="Enter Student Name to start searching !"
+          key="search"
+          type="text"
+          onChange={onSearch}
+        />
+      </div>
+      <div>{drawTable()}</div>
     </div>
   );
-};
+}
 
-export default StudentsTable;
+const colums = [
+  { title: "ID", dataIndex: "key", key: "key" },
+  { title: "Name", dataIndex: "name", key: "name" },
+  { title: "Date of Birth", dataIndex: "dob", key: "dob" },
+  { title: "Age", dataIndex: "age", key: "age" },
+  { title: "Stream", dataIndex: "stream", key: "stream" },
+  {
+    title: "Subject line 1",
+    dataIndex: "subject_line_1",
+    key: "subject_line_1",
+  },
+  {
+    title: "Subject 1 grade",
+    dataIndex: "subject_1_grade",
+    key: "subject_1_grade",
+  },
+  {
+    title: "Subject line 2",
+    dataIndex: "subject_line_2",
+    key: "subject_line_2",
+  },
+  {
+    title: "Subject 2 grade",
+    dataIndex: "subject_2_grade",
+    key: "subject_2_grade",
+  },
+  {
+    title: "Subject line 3",
+    dataIndex: "subject_line_3",
+    key: "subject_line_3",
+  },
+  {
+    title: "Subject 3 grade",
+    dataIndex: "subject_3_grade",
+    key: "subject_3_grade",
+  },
+];

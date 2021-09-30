@@ -1,0 +1,32 @@
+.container {
+  background-image: -webkit-linear-gradient(
+    135deg,
+    #d9ebee 30%,
+    #8fe8f8 90%
+  ) !important;
+  background-image: linear-gradient(
+    135deg,
+    #d9ebee 30%,
+    #8fe8f8 90%
+  ) !important;
+  position: relative !important;
+  z-index: 3 !important;
+  color: #999 !important;
+  border: transparent 5px rgb(2, 131, 163);
+  padding-top: 100px;
+  padding-bottom: 100px;
+  box-shadow: 0 30px 40px rgba(0, 0, 0, 0.3);
+  font-weight: 900;
+}
+
+.container * {
+  box-sizing: border-box;
+}
+
+.container button {
+  background-color: #c4ecf5;
+}
+
+.title {
+  text-align: center;
+}
